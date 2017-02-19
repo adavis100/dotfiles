@@ -86,8 +86,12 @@ function! PasteToggle()
   " Toggle paste mode
   if(&paste == 1)
     set nopaste
+    set number
+    set relativenumber
   else
     set paste
+    set norelativenumber
+    set nonumber
   endif
 endfunc
 
