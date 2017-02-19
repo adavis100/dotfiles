@@ -22,7 +22,7 @@ set showcmd             " show command in bottom bar
 set wildmenu            " visual autocomplete for command menu
 filetype indent on      " activates indenting for files
 "set smartindent          " auto indenting
-set number              " line numbers
+set relativenumber              " line numbers
 set showmatch           " highlight matching [{()}]
 set nobackup            " get rid of annoying ~file
 
@@ -53,13 +53,43 @@ set tags=tags;
 "
 " Remap arrow keys (to be sure not to use them)
 "
-"map <Left> <Nop>
-"map <Right> <Nop>
-"map <Up> <Nop>
-"map <Down> <Nop>
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
 
 
 "
 " Key mappings
 "
+" Mapping ESC in insert mode and command mode to double i
+imap ii <C-[>
+cmap ii <C-[>
 
+nmap <F5> :s/\v\(\s*([^, ]+)(\s*,\s*)([^, ]+)\s*\)/\(\3\2\1\)/<CR>
+
+
+function! NumberToggle()
+  "  Toggle between showing/hidding the numbers.
+  if(&relativenumber == 1)
+    set norelativenumber
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+"  Map Ctrl+n to NumberToggle
+nnoremap <C-n> :call NumberToggle()<cr>
+
+function! PasteToggle()
+  " Toggle paste mode
+  if(&paste == 1)
+    set nopaste
+  else
+    set paste
+  endif
+endfunc
+
+" Map Ctrl+p to PasteToggle
+nnoremap <C-p> :call PasteToggle()<cr>
