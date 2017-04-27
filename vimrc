@@ -97,3 +97,6 @@ endfunc
 
 " Map Ctrl+p to PasteToggle
 nnoremap <C-p> :call PasteToggle()<cr>
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>

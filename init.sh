@@ -1,17 +1,15 @@
 #!/bin/bash
 
-if [ -s ~/.vimrc ]
+if [ ! -s ~/.vimrc ]
 then
   mv ~/.vimrc ~/.vimrc.bak
 fi
 
-if [ -s ~/.zshrc ]
+if [ ! -s ~/.config/fish/config.fish ]
 then
-  mv ~/.zshrc ~/.zshrc.bak
+  mv ~/.config/fish/config.fish ~/.config/fish/config.fish.bak
 fi
 
-curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
-git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-
 ln -s $(pwd)/vimrc ~/.vimrc
-ln -s $(pwd)/zshrc ~/.zshrc
+ln -s $(pwd)/config.fish ~/.config/fish/config.fish
+
