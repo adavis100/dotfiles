@@ -1,5 +1,6 @@
 set nocompatible        " be iMproved, required
-colorscheme desert      " colorscheme desert
+colorscheme slate      " colorscheme slate
+set guifont=Monaco:h13
 
 "
 " Spaces & Tabs
@@ -59,12 +60,13 @@ map <Up> <Nop>
 map <Down> <Nop>
 
 
+" set update time to 250ms (from 4s default)
+" this is time vim wait to trigger plugins after typine stops
+set updatetime=250
+
 "
 " Key mappings
 "
-" Mapping ESC in insert mode and command mode to double i
-imap ii <C-[>
-cmap ii <C-[>
 
 nmap <F5> :s/\v\(\s*([^, ]+)(\s*,\s*)([^, ]+)\s*\)/\(\3\2\1\)/<CR>
 
