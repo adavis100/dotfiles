@@ -14,6 +14,14 @@ set expandtab           " tabs are spaces
 autocmd Filetype java setlocal ts=4 sw=4 sts=4 expandtab
 autocmd Filetype ruby setlocal ts=4 sw=4 sts=4 expandtab
 
+" show at least one line of context above/below cursor
+set scrolloff=1
+
+" read file if changed outside vim
+set autoread
+
+set history=1000
+
 "
 " UI Config 
 "
