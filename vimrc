@@ -22,6 +22,9 @@ set autoread
 
 set history=1000
 
+" Use system clipboard
+set clipboard=unnamed
+
 "
 " UI Config 
 "
@@ -78,6 +81,8 @@ set updatetime=250
 
 nmap <F5> :s/\v\(\s*([^, ]+)(\s*,\s*)([^, ]+)\s*\)/\(\3\2\1\)/<CR>
 
+" Map leader to space bar
+let mapleader = "\<Space>"
 
 function! NumberToggle()
   "  Toggle between showing/hidding the numbers.
@@ -89,8 +94,8 @@ function! NumberToggle()
   endif
 endfunc
 
-"  Map Ctrl+n to NumberToggle
-nnoremap <C-n> :call NumberToggle()<cr>
+"  Map Leader+n to NumberToggle
+nnoremap <Leader>n :call NumberToggle()<cr>
 
 function! PasteToggle()
   " Toggle paste mode
@@ -105,8 +110,19 @@ function! PasteToggle()
   endif
 endfunc
 
-" Map Ctrl+p to PasteToggle
-nnoremap <C-p> :call PasteToggle()<cr>
+" Map Leader+z to PasteToggle
+nnoremap <Leader>z :call PasteToggle()<cr>
 
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+" Leader+l redraws the screen and removes any search highlighting.
+nnoremap <silent> <Leader>l :nohl<CR><C-l>
+
+" Leader+w to save file
+nnoremap <Leader>w :w<CR>
+
+" Copy & paste to system clipboard with <Leader>p and <Leader>y:
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
