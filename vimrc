@@ -14,6 +14,13 @@ set expandtab           " tabs are spaces
 autocmd Filetype java setlocal ts=4 sw=4 sts=4 expandtab
 autocmd Filetype ruby setlocal ts=4 sw=4 sts=4 expandtab
 
+" search down into subfolders
+" provides tab completion for all file-related tasks
+set path+=**
+
+" display all matching files when we tab complete
+set wildmenu
+
 " show at least one line of context above/below cursor
 set scrolloff=1
 
