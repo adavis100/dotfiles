@@ -70,6 +70,8 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
+" Notes directory for vim notes plugin
+let g:notes_directories = ['~/Documents/Notes']
 
 " set update time to 250ms (from 4s default)
 " this is time vim wait to trigger plugins after typine stops
@@ -78,8 +80,6 @@ set updatetime=250
 "
 " Key mappings
 "
-
-nmap <F5> :s/\v\(\s*([^, ]+)(\s*,\s*)([^, ]+)\s*\)/\(\3\2\1\)/<CR>
 
 " Map leader to space bar
 let mapleader = "\<Space>"
@@ -103,10 +103,12 @@ function! PasteToggle()
     set nopaste
     set number
     set relativenumber
+    GitGutterEnable
   else
     set paste
     set norelativenumber
     set nonumber
+    GitGutterDisable
   endif
 endfunc
 
@@ -118,6 +120,7 @@ nnoremap <silent> <Leader>l :nohl<CR><C-l>
 
 " Leader+w to save file
 nnoremap <Leader>w :w<CR>
+nnoremap <leader>q :q<cr>
 
 " Copy & paste to system clipboard with <Leader>p and <Leader>y:
 vmap <Leader>y "+y
