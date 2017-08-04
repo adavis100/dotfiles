@@ -136,3 +136,6 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
+
+" Map semicolon to colon to enter commands w/o shift
+nmap ; :
