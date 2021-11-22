@@ -1,7 +1,4 @@
-set -x JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home
-set -x JRE_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre
-set -x M2_HOME /opt/apache-maven-3.5.0
-set -x PATH $JAVA_HOME/bin $JRE_HOME/bin /usr/local/bin /sbin $M2_HOME/bin $PATH
+set -x PATH /opt/homebrew/bin /opt/homebrew/opt/grep/libexec/gnubin $PATH
 
 function get
   git $argv
@@ -10,6 +7,11 @@ end
 function ls
   /bin/ls -FGh $argv
 end
+
+# these require bat (https://github.com/sharkdp/bat)
+alias cat 'bat --paging=never'
+alias more bat
+alias man batman
 
 alias hr 'history --merge'  # read and merge history from disk
 
@@ -53,3 +55,24 @@ end
 
 # set VI mode
 fish_vi_key_bindings
+
+function setjdk
+  if test -n "$JAVA_HOME"
+    removeFromPath "$JAVA_HOME/bin"
+  end
+  set -e JAVA_HOME
+  set -gx JAVA_HOME (/usr/libexec/java_home -v $argv[1])
+  set -gx PATH $JAVA_HOME/bin $PATH
+end
+
+function removeFromPath
+  set -l idx 0
+  for x in (seq (count $PATH))
+    if test "$argv[1]" = "$PATH[$x]"
+      set idx $x
+    end
+  end
+  if test $idx -gt 0
+    set -e PATH[$idx]
+  end
+end
